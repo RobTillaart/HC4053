@@ -17,9 +17,11 @@ HC4053 is a library to control the CD74HC4053 3x2 channel
 multiplexer / demultiplexer and compatible devices.
 
 The HC4053 is in fact three separate controllable switches in one,
-and every switch can be in two positions.
+and every switch can be set indepently in one of two positions.
+This is functionaly different from both the 4051, 4052 and 4067
+in which there is only one channel selection
 
-The channel selection is done with three select lines **A, B, C**.
+The independent channel selection is done with three select lines **A, B, C**.
 
 The device can be enabled/disabled by the enable line **INH**
 
@@ -39,7 +41,7 @@ to elaborate.
 
 ## Hardware connection
 
-Typical connection is to connect the four **select pins** to four IO Pins of your board.
+Typical connection is to connect the three **select pins** to three IO Pins of your board.
 
 The optional **enablePin (INH)** must be connected to GND if not used.
 This way the device is continuous enabled.
@@ -53,13 +55,13 @@ Example multiplexing 3x analog in.
      |           E |------------->| INH         |
      |             |              |             |
      |           A |------------->| A        X0 |
-     | analog    X |------------->| X        X1 |
+     | analog    X |<-------------| X        X1 |
      |             |              |             |
      |           B |------------->| B        Y0 |
-     | analog    Y |------------->| Y        Y1 |
+     | analog    Y |<-------------| Y        Y1 |
      |             |              |             |
      |           C |------------->| C        Z0 |
-     | analog    Z |------------->| Z        Z1 |
+     | analog    Z |<-------------| Z        Z1 |
      |             |              |             |
      |             |              |             |
      |             |              |             |
@@ -82,7 +84,7 @@ Example multiplexing 3x analog in.
 Set the three select pins and optional the enable pin.
 If the enablePin == 255 it is considered not used.
 - **void setChannel(uint8_t channel)** sets A, B and C to channel in one call.
-think of it as a master switch.
+Think of it as a master switch.
 Valid values 0, 1, this value is not checked, only last bit is used.
 Note the channels will not change at the very same moment.
 - **void setChannelA(uint8_t channel)** sets A to channel.
