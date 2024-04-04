@@ -20,8 +20,8 @@ HC4053 is a library to control the CD74HC4053 3 x 2 channel
 multiplexer / demultiplexer and compatible devices.
 
 The HC4053 is in fact three separate controllable switches in one,
-and every switch can be set indepently in one of two positions.
-This is functionaly different from both the 4051, 4052 and 4067
+and every switch can be set independently in one of two positions.
+This is functionally different from both the 4051, 4052 and 4067
 in which there is only one channel selection
 
 It is also possible to use the HC4053 to select an OUTPUT channel.
