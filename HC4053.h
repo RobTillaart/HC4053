@@ -43,7 +43,7 @@ public:
 
   bool setChannel(uint8_t channel, bool disable = true)
   {
-    if (channel > 1) return false
+    if (channel > 1) return false;
     if (disable)
     {
       this->disable();
